@@ -15,7 +15,7 @@ Topics include:
 - Graphs
 - Hashing Techniques
 - Heaps
-Course Project:
 
-- A comprehensive project that applies multiple data structures to solve a real-world problem.
+Course Project:
+A comprehensive project that applies multiple data structures to solve a real-world problem.
 The project emphasizes the practical application of data structures in solving complex issues.
