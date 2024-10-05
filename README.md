@@ -3,7 +3,7 @@ This repository contains a collection of **experiments** performed during the Da
 # Contents
 The repository is organized into two main sections:
 
-Lab Experiments:
+**Lab Experiments:**
 
 A set of experiments focused on the implementation and understanding of various data structures.
 Topics include:
@@ -16,7 +16,7 @@ Topics include:
 - Hashing Techniques
 - Heaps
 
-Course Project:
+**Course Project:**
 <br>
 A comprehensive project that applies multiple data structures to solve a real-world problem.
 The project emphasizes the practical application of data structures in solving complex issues.
