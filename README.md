@@ -17,5 +17,6 @@ Topics include:
 - Heaps
 
 Course Project:
+<br>
 A comprehensive project that applies multiple data structures to solve a real-world problem.
 The project emphasizes the practical application of data structures in solving complex issues.
