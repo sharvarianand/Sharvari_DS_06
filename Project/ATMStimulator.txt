@@ -1,0 +1,111 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_ACCOUNTS 5
+typedef struct {
+int accountNumber;
+int pin;
+float balance;
+} Account;
+Account accounts[MAX_ACCOUNTS];
+void initializeAccounts() {
+for (int i = 0; i < MAX_ACCOUNTS; i++) {
+accounts[i].accountNumber = 1000 + i;
+accounts[i].pin = 1234; // Default PIN for all accounts
+accounts[i].balance = 1000.0; // Default balance
+}
+}
+int authenticate(int accountNumber, int pin) {
+for (int i = 0; i < MAX_ACCOUNTS; i++) {
+if (accounts[i].accountNumber == accountNumber && accounts[i].pin == pin) {
+return i;
+}
+}
+return -1;
+}
+void checkBalance(int index) {
+printf("Your current balance is: %.2f\n", accounts[index].balance);
+}
+void withdrawMoney(int index) {
+float amount;
+printf("Enter the amount to withdraw: ");
+scanf("%f", &amount);
+fflush(stdin);
+if (amount > accounts[index].balance) {
+printf("Insufficient balance!\n");
+} else {
+accounts[index].balance -= amount;
+printf("Withdrawal successful! New balance: %.2f\n", accounts[index].balance);
+}
+}
+void depositMoney(int index) {
+float amount;
+printf("Enter the amount to deposit: ");
+scanf("%f", &amount);
+fflush(stdin);
+accounts[index].balance += amount;
+printf("Deposit successful! New balance: %.2f\n", accounts[index].balance);
+}
+void changePIN(int index) {
+int oldPin, newPin;
+printf("Enter your current PIN: ");
+scanf("%d", &oldPin);
+fflush(stdin);
+if (oldPin == accounts[index].pin) {
+printf("Enter your new PIN: ");
+scanf("%d", &newPin);
+fflush(stdin); // Clear buffer
+accounts[index].pin = newPin;
+printf("PIN changed successfully!\n");
+} else {
+printf("Incorrect current PIN!\n");
+}
+}
+int main() {
+int accountNumber, pin, choice;
+int authenticatedIndex;
+initializeAccounts();
+printf("Enter your account number: ");
+scanf("%d", &accountNumber);
+fflush(stdin);
+printf("Enter your PIN: ");
+scanf("%d", &pin);
+fflush(stdin);
+authenticatedIndex = authenticate(accountNumber, pin);
+if (authenticatedIndex == -1) {
+printf("Invalid account number or PIN!\n");
+return 0;
+}
+while (1) {
+printf("\nATM Simulator Menu:\n");
+printf("1. Check Balance\n");
+printf("2. Withdraw Money\n");
+printf("3. Deposit Money\n");
+printf("4. Change PIN\n");
+printf("5. Exit\n");
+printf("Enter your choice: ");
+scanf("%d", &choice);
+fflush(stdin);
+switch (choice) {
+case 1:
+checkBalance(authenticatedIndex);
+break;
+case 2:
+withdrawMoney(authenticatedIndex);
+break;
+case 3:
+depositMoney(authenticatedIndex);
+break;
+case 4:
+changePIN(authenticatedIndex);
+break;
+case 5:
+printf("Thank you for using the ATM Simulator. Goodbye!\n");
+exit(0);
+default:
+printf("Invalid choice! Please try again.\n");
+}
+}
+return 0;
+}
